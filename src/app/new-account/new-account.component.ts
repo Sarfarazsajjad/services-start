@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
+import { LoggerService } from '../logger.service';
 
 @Component({
   selector: 'app-new-account',
@@ -6,6 +7,11 @@ import { Component, EventEmitter, Output } from '@angular/core';
   styleUrls: ['./new-account.component.css']
 })
 export class NewAccountComponent {
+
+  constructor(private logger: LoggerService){
+
+  }
+
   @Output() accountAdded = new EventEmitter<{name: string, status: string}>();
 
   onCreateAccount(accountName: string, accountStatus: string) {
@@ -13,6 +19,7 @@ export class NewAccountComponent {
       name: accountName,
       status: accountStatus
     });
-    console.log('A server status changed, new status: ' + accountStatus);
+    this.logger.logStatusChnaged(accountStatus);
+    // console.log('A server status changed, new status: ' + accountStatus);
   }
 }
