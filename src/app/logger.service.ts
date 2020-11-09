@@ -7,7 +7,7 @@ export class LoggerService {
 
   constructor() { }
 
-  logStatusChnaged(status){
+  logStatusChanged(status){
     console.log('A server status changed, new status: ' + status);
   }
 }
